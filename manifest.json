@@ -1,22 +1,28 @@
 {
   "manifest_version": 3,
-  "name": "Response Detection Extension",
-  "description": "Detects responses from GPT's.",
+  "name": "TypeChat AI",
+  "description": "Enhances AI chat experiences by adding realistic typing sounds to responses from ChatGPT, Claude, and other AI platforms",
   "version": "1.0",
-  "permissions": [
-    "activeTab"
-  ],
+  "author": "TypeChat AI Team",
+  "homepage_url": "https://github.com/typechat-ai",
+  "permissions": ["activeTab", "storage"],
+  "action": { "default_popup": "popup.html" },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
   "content_scripts": [
     {
       "matches": [
-        "*://chat.openai.com/*",
-        "https://chatgpt.com/",
-        "*://deepseek.ai/*"
+        "https://chat.openai.com/*",
+        "https://claude.ai/*",
+        "https://chat.deepseek.com/*",
+        "https://chatgpt.com/*"
       ],
       "js": ["content.js"]
     }
   ],
-
   "web_accessible_resources": [
     {
       "resources": [

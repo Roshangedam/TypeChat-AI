@@ -1,6 +1,19 @@
+// Browser detection utility
+const browserAPI = (function() {
+    if (typeof chrome !== 'undefined') {
+        return chrome;
+    } else if (typeof browser !== 'undefined') {
+        return browser;
+    } else if (typeof msBrowser !== 'undefined') {
+        return msBrowser;
+    } else {
+        throw new Error('Browser API not supported');
+    }
+})();
+
 // Standard Configuration
 const config = {
-    targetClassNames: ['markdown','ds-deepseek'],
+    targetClassNames: ['markdown','ds-markdown','font-claude-message'],
     mutationConfig: {
         childList: true,
         attributes: true,
@@ -14,8 +27,10 @@ const config = {
     }
 };
 
-// Keep track of currently playing audio
+// Keep track of currently playing audio and settings
 let currentAudio = null;
+let volume = 0.5; // Default volume
+let isEnabled = true; // Default enabled state
 
 function getRandomAudioFile() {
     const randomNumber = Math.floor(Math.random() * 5) + 1;
@@ -46,10 +61,15 @@ function executeCommonLogic(mutationType, mutationDetail) {
     // Stop any currently playing audio before playing new one
     stopCurrentAudio();
 
+    if (!isEnabled) return;
+
     let audioFile = getRandomAudioFile();
-    currentAudio = new Audio(chrome.runtime.getURL(`audio/${audioFile}`));
+    currentAudio = new Audio(browserAPI.runtime.getURL(`audio/${audioFile}`));
+    currentAudio.volume = volume;
     currentAudio.play().catch(error => {
-        console.error('Error playing sound:', error);
+        if (config.extensionConfig.logMutations) {
+          console.error('Error playing sound:', error);
+        }
         currentAudio = null;
     });
 }
@@ -121,6 +141,28 @@ function observeDynamicallyAddedElements() {
         subtree: true
     });
 }
+
+// Listen for messages from popup
+browserAPI.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.type === 'UPDATE_VOLUME') {
+        volume = message.volume;
+    } else if (message.type === 'UPDATE_ENABLED') {
+        isEnabled = message.enabled;
+        if (!isEnabled) {
+            stopCurrentAudio();
+        }
+    }
+});
+
+// Load saved settings
+browserAPI.storage.sync.get(['volume', 'enabled'], (result) => {
+    if (result.volume !== undefined) {
+        volume = result.volume / 100; // Convert from percentage to 0-1 range
+    }
+    if (result.enabled !== undefined) {
+        isEnabled = result.enabled;
+    }
+});
 
 // Initialize observers when the content script loads
 observeMultipleElements();

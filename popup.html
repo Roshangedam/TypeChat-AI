@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GPT Response Sound Settings</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #2c3e50;
+            --background-color: #f5f6fa;
+            --text-color: #2c3e50;
+            --border-radius: 8px;
+        }
+
+        body {
+            width: 320px;
+            min-height: 320px;
+            padding: 20px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            transition: height 0.3s ease;
+        }
+
+        .container {
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: white;
+            padding: 20px;
+            margin-top: 35px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .settings-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .dialog-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .dialog {
+            background: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 320px;
+            position: relative;
+            text-align: center;
+            max-height: 85vh;
+            overflow-y: auto;
+            margin: 0 auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) #f1f1f1;
+        }
+
+        .dialog::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .dialog::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .dialog::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        h2 {
+            margin: 0 0 15px 0;
+            color: var(--secondary-color);
+            font-size: 1.5em;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .volume-slider {
+            flex-grow: 1;
+            -webkit-appearance: none;
+            height: 4px;
+            background: #dfe6e9;
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .volume-value {
+            min-width: 45px;
+            text-align: right;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .toggle-switch input[type="checkbox"] {
+            -webkit-appearance: none;
+            width: 40px;
+            height: 20px;
+            background: #dfe6e9;
+            border-radius: 20px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle-switch input[type="checkbox"]:checked {
+            background: var(--primary-color);
+        }
+
+        .toggle-switch input[type="checkbox"]:before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: white;
+            top: 2px;
+            left: 2px;
+            transition: left 0.3s;
+        }
+
+        .toggle-switch input[type="checkbox"]:checked:before {
+            left: 22px;
+        }
+
+        .about-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        .about-button:hover {
+            background-color: #357abd;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: block;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+        }
+
+        .profile-name {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--secondary-color);
+            padding: 8px;
+            border-radius: var(--border-radius);
+            transition: background-color 0.2s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--background-color);
+        }
+
+        .social-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .app-info {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .app-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .app-info p {
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+
+        .app-info ul {
+            margin: 15px 0;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .close-dialog {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>GPT Response Sound Settings</h2>
+        <div class="settings-section">
+            <div class="volume-control">
+                <label for="volume">Volume:</label>
+                <input type="range" id="volume" class="volume-slider" min="0" max="100" value="50">
+                <span id="volume-value" class="volume-value">50%</span>
+            </div>
+            <div class="toggle-switch">
+                <label for="enabled">Enable Sound:</label>
+                <input type="checkbox" id="enabled" checked>
+            </div>
+            <div class="button-row">
+                <button id="aboutMeBtn" class="about-button">About Me</button>
+                <button id="aboutAppBtn" class="about-button">About App</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="aboutMeDialog" class="dialog-overlay">
+        <div class="dialog">
+            <button class="close-dialog">&times;</button>
+            <div class="profile-section">
+                <img src="images/profile-photo.jpg" alt="Roshan B Gedam" class="profile-photo">
+                <div class="profile-name">Roshan B Gedam</div>
+                <div class="social-links">
+                    <a href="https://github.com/Roshangedam/TypeChat-AI" target="_blank">
+                        <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/roshan-gedam-105210183/" target="_blank">
+                        <svg class="social-icon" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="mailto:roshangedam1998@gmail.com">
+                        <svg class="social-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="aboutAppDialog" class="dialog-overlay">
+        <div class="dialog">
+            <button class="close-dialog">&times;</button>
+            <div class="app-info">
+                <h3>About GPT Response Sound</h3>
+                <p>This extension enhances your AI chat experience by adding sound notifications for responses. Currently supports:</p>
+                <ul>
+                    <li>ChatGPT</li>
+                    <li>Claude AI</li>
+                    <li>DeepSeek</li>
+                </ul>
+                <p>Get notified whenever your AI assistant responds!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
+
+<style>
+    .dialog-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+</style>
+
+
