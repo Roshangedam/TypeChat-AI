@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Response Detection Extension",
+  "description": "Detects responses from GPT's.",
+  "version": "1.0",
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://chat.openai.com/*",
+        "https://chatgpt.com/",
+        "*://deepseek.ai/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "audio/press1.mp3",
+        "audio/press2.mp3",
+        "audio/press3.mp3",
+        "audio/press4.mp3",
+        "audio/press5.mp3"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
