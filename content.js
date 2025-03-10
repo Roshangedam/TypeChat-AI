@@ -21,7 +21,6 @@ function getRandomAudioFile() {
 }
 
 
-let sound = null;
 
 
 // Function to execute common logic for all mutations
@@ -38,14 +37,7 @@ function executeCommonLogic(mutationType, mutationDetail) {
         }
     });
     let audioFile = getRandomAudioFile();
-
-    // Check if the audio is already playing, and pause it if necessary
-    if (sound && !sound.paused) {
-        sound.pause();
-        sound.currentTime = 0; // Reset the audio
-    }
-
-    sound = new Audio(chrome.runtime.getURL(`audio/${audioFile}`));
+    let sound = new Audio(chrome.runtime.getURL(`audio/${audioFile}`));
     sound.play().catch(error => {
         console.error('Error playing sound:', error);
     });
