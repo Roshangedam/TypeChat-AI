@@ -31,6 +31,7 @@ const config = {
 let currentAudio = null;
 let volume = 0.5; // Default volume
 let isEnabled = true; // Default enabled state
+let autoScroll = true; // Default auto-scroll state
 
 function getRandomAudioFile() {
     const randomNumber = Math.floor(Math.random() * 5) + 1;
@@ -62,6 +63,36 @@ function executeCommonLogic(mutationType, mutationDetail) {
     stopCurrentAudio();
 
     if (!isEnabled) return;
+
+    // Auto-scroll to bottom if enabled
+    if (autoScroll) {
+        // Find the scrollable container element
+        const scrollableElements = Array.from(document.querySelectorAll('*')).filter(el => {
+            const style = window.getComputedStyle(el);
+            return (style.overflowY === 'auto' || style.overflowY === 'scroll') &&
+                   el.scrollHeight > el.clientHeight;
+        });
+
+        // Find the most relevant scrollable container (the one containing our target elements)
+        const chatContainer = scrollableElements.find(el => {
+            return config.targetClassNames.some(className =>
+                el.querySelector(`.${className}`) !== null
+            );
+        });
+
+        // If found, scroll the container to bottom, otherwise fallback to window scroll
+        if (chatContainer) {
+            chatContainer.scrollTo({
+                top: chatContainer.scrollHeight,
+                behavior: 'smooth'
+            });
+        } else {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+    }
 
     let audioFile = getRandomAudioFile();
     currentAudio = new Audio(browserAPI.runtime.getURL(`audio/${audioFile}`));
@@ -144,26 +175,40 @@ function observeDynamicallyAddedElements() {
 
 // Listen for messages from popup
 browserAPI.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === 'updateSettings') {
-        if (message.volume !== undefined) {
+    switch (message.type) {
+        case 'UPDATE_VOLUME':
             volume = message.volume;
-        }
-        if (message.enabled !== undefined) {
+            break;
+        case 'UPDATE_ENABLED':
             isEnabled = message.enabled;
             if (!isEnabled) {
                 stopCurrentAudio();
             }
-        }
+            break;
+        case 'UPDATE_AUTO_SCROLL':
+            autoScroll = message.autoScroll;
+            break;
+        case 'updateSettings':
+            if (message.volume !== undefined) volume = message.volume;
+            if (message.enabled !== undefined) {
+                isEnabled = message.enabled;
+                if (!isEnabled) stopCurrentAudio();
+            }
+            if (message.autoScroll !== undefined) autoScroll = message.autoScroll;
+            break;
     }
 });
 
 // Load saved settings
-browserAPI.storage.sync.get(['volume', 'enabled'], (result) => {
+browserAPI.storage.sync.get(['volume', 'enabled', 'autoScroll'], (result) => {
     if (result.volume !== undefined) {
         volume = result.volume / 100; // Convert from percentage to 0-1 range
     }
     if (result.enabled !== undefined) {
         isEnabled = result.enabled;
+    }
+    if (result.autoScroll !== undefined) {
+        autoScroll = result.autoScroll;
     }
 });
 

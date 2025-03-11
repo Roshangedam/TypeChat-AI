@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const volumeSlider = document.getElementById('volume');
     const volumeValue = document.getElementById('volume-value');
     const enabledToggle = document.getElementById('enabled');
+    const autoScrollToggle = document.getElementById('autoScroll');
     const aboutMeBtn = document.getElementById('aboutMeBtn');
     const aboutAppBtn = document.getElementById('aboutAppBtn');
     const aboutMeDialog = document.getElementById('aboutMeDialog');
@@ -52,12 +53,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Auto Scroll Toggle
+    function updateAutoScroll(checked) {
+        chrome.storage.sync.set({ autoScroll: checked }, function() {
+            if (chrome.runtime.lastError) {
+                console.error('Error saving auto-scroll state:', chrome.runtime.lastError);
+                return;
+            }
+            // Send message to content script
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                if (tabs[0]) {
+                    chrome.tabs.sendMessage(tabs[0].id, {
+                        type: 'UPDATE_AUTO_SCROLL',
+                        autoScroll: checked
+                    });
+                }
+            });
+        });
+    }
+
     enabledToggle.addEventListener('change', function() {
         updateEnabled(this.checked);
     });
 
+    autoScrollToggle.addEventListener('change', function() {
+        updateAutoScroll(this.checked);
+    });
+
     // Load Saved Settings
-    chrome.storage.sync.get(['volume', 'enabled'], function(data) {
+    chrome.storage.sync.get(['volume', 'enabled', 'autoScroll'], function(data) {
         if (chrome.runtime.lastError) {
             console.error('Error loading settings:', chrome.runtime.lastError);
             return;
@@ -78,6 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Set default enabled state to true
             updateEnabled(true);
             enabledToggle.checked = true;
+        }
+
+        if (data.autoScroll !== undefined) {
+            autoScrollToggle.checked = data.autoScroll;
+        } else {
+            // Set default auto-scroll state to true
+            updateAutoScroll(true);
+            autoScrollToggle.checked = true;
         }
     });
 
