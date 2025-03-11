@@ -144,12 +144,15 @@ function observeDynamicallyAddedElements() {
 
 // Listen for messages from popup
 browserAPI.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === 'UPDATE_VOLUME') {
-        volume = message.volume;
-    } else if (message.type === 'UPDATE_ENABLED') {
-        isEnabled = message.enabled;
-        if (!isEnabled) {
-            stopCurrentAudio();
+    if (message.type === 'updateSettings') {
+        if (message.volume !== undefined) {
+            volume = message.volume;
+        }
+        if (message.enabled !== undefined) {
+            isEnabled = message.enabled;
+            if (!isEnabled) {
+                stopCurrentAudio();
+            }
         }
     }
 });
