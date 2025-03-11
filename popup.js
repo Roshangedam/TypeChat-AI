@@ -1,28 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // DOM Elements
+document.addEventListener('DOMContentLoaded', () => {
+    // Get DOM elements
     const volumeSlider = document.getElementById('volume');
     const volumeValue = document.getElementById('volume-value');
     const enabledToggle = document.getElementById('enabled');
-    const aboutMeDialog = document.getElementById('aboutMeDialog');
-    const aboutAppDialog = document.getElementById('aboutAppDialog');
     const aboutMeBtn = document.getElementById('aboutMeBtn');
     const aboutAppBtn = document.getElementById('aboutAppBtn');
-    const closeDialogBtns = document.querySelectorAll('.close-dialog');
-
-    // Dialog Control Functions
-    function showDialog(dialog) {
-        if (dialog) {
-            dialog.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-    }
-
-    function hideDialog(dialog) {
-        if (dialog) {
-            dialog.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    }
+    const aboutMeDialog = document.getElementById('aboutMeDialog');
+    const aboutAppDialog = document.getElementById('aboutAppDialog');
+    const closeButtons = document.querySelectorAll('.close-dialog');
 
     // Volume Control
     function updateVolume(value) {
@@ -96,34 +81,41 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Dialog Button Event Listeners
-    aboutMeBtn.addEventListener('click', () => showDialog(aboutMeDialog));
-    aboutAppBtn.addEventListener('click', () => showDialog(aboutAppDialog));
+    // Dialog handling functions
+    const openDialog = (dialog) => {
+        dialog.classList.add('active');
+    };
 
-    // Close Dialog Event Listeners
-    closeDialogBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            hideDialog(btn.closest('.dialog-overlay'));
+    const closeDialog = (dialog) => {
+        dialog.classList.remove('active');
+    };
+
+    // Add click event listeners for buttons
+    aboutMeBtn.addEventListener('click', () => openDialog(aboutMeDialog));
+    aboutAppBtn.addEventListener('click', () => openDialog(aboutAppDialog));
+
+    // Close dialog when clicking close button
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const dialog = button.closest('.dialog-overlay');
+            closeDialog(dialog);
         });
     });
 
-    // Close Dialog on Outside Click
-    [aboutMeDialog, aboutAppDialog].forEach(dialog => {
-        dialog.addEventListener('click', function(e) {
-            if (e.target === dialog) {
-                hideDialog(dialog);
-            }
-        });
+    // Close dialog when clicking outside
+    document.addEventListener('click', (event) => {
+        if (event.target.classList.contains('dialog-overlay')) {
+            closeDialog(event.target);
+        }
     });
 
-    // Handle Escape Key Press
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            const visibleDialog = document.querySelector('.dialog-overlay[style*="display: flex"]');
-            if (visibleDialog) {
-                hideDialog(visibleDialog);
+    // Handle keyboard events
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            const activeDialog = document.querySelector('.dialog-overlay.active');
+            if (activeDialog) {
+                closeDialog(activeDialog);
             }
         }
     });
-});
+})

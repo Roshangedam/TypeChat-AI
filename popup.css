@@ -1,0 +1,288 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #23226B;
+    --background-color: rgba(245, 246, 250, 0.8);
+    --text-color: #2c3e50;
+    --border-radius: 30px;
+    --glass-background: rgba(180, 172, 172, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-shadow: rgba(31, 38, 135, 0.37);
+}
+
+body {
+    width: 320px;
+    min-height: 320px;
+    padding: 20px;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    background:  rgba(51, 50, 50, 0.154) url(https://i.ibb.co/M9LB3Kq/Glassmorphism-Background.png);
+    background-size: cover;
+    color: var(--text-color);
+    margin: 0;
+    transition: all 0.3s ease;
+}
+
+.container {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: var(--glass-background);
+    padding: 20px;
+    margin-top: 35px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 32px 0 var(--glass-shadow);
+    backdrop-filter: blur(16.5px);
+    -webkit-backdrop-filter: blur(16.5px);
+    border: 1px solid var(--glass-border);
+}
+
+.settings-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.dialog-overlay {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(218, 212, 212, 0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.dialog-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.dialog {
+    background: var(--glass-background);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    width: 70%;
+    max-width: 320px;
+    position: relative;
+    text-align: center;
+    max-height: 80vh;
+    overflow-y: auto;
+    margin: 0 auto;
+    box-shadow: 0 8px 32px 0 var(--glass-shadow);
+    backdrop-filter: blur(16.5px);
+    -webkit-backdrop-filter: blur(16.5px);
+    border: 1px solid var(--glass-border);
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) #f1f1f1;
+    transform: scale(0.95) translateY(-20px);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    visibility: hidden;
+}
+
+.dialog-overlay.active .dialog {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.dialog::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dialog::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.dialog::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+h2 {
+    margin: 0 0 15px 0;
+    color: var(--secondary-color);
+    font-size: 1.5em;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.volume-slider {
+    flex-grow: 1;
+    -webkit-appearance: none;
+    height: 4px;
+    background: var(--glass-background);
+    border-radius: 2px;
+    outline: none;
+    border: 1px solid var(--glass-border);
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.volume-value {
+    min-width: 45px;
+    text-align: right;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.toggle-switch {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.toggle-switch input[type="checkbox"] {
+    -webkit-appearance: none;
+    width: 40px;
+    height: 20px;
+    background: var(--glass-background);
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16.5px);
+    -webkit-backdrop-filter: blur(16.5px);
+}
+
+.toggle-switch input[type="checkbox"]:checked {
+    background: var(--primary-color);
+}
+
+.toggle-switch input[type="checkbox"]:before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: white;
+    top: 2px;
+    left: 2px;
+    transition: left 0.3s;
+}
+
+.toggle-switch input[type="checkbox"]:checked:before {
+    left: 22px;
+}
+
+.about-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.about-button:hover {
+    background-color: #357abd;
+}
+
+.button-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.profile-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: block;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+}
+
+.profile-name {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--secondary-color);
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--secondary-color);
+    padding: 8px;
+    border-radius: var(--border-radius);
+    transition: background-color 0.2s;
+}
+
+.social-links a:hover {
+    background-color: var(--background-color);
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.app-info {
+    text-align: center;
+    padding: 15px;
+}
+
+.app-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.app-info p {
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+.app-info ul {
+    margin: 15px 0;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.close-dialog {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--text-color);
+}
