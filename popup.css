@@ -29,7 +29,7 @@ body {
     gap: 20px;
     background: var(--glass-background);
     padding: 20px;
-    margin-top: 35px;
+    margin-top: 20px;
     border-radius: var(--border-radius);
     box-shadow: 0 8px 32px 0 var(--glass-shadow);
     backdrop-filter: blur(16.5px);
