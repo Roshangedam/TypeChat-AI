@@ -14,11 +14,10 @@
 
 ---
 
-## 🎥 Watch Our Intro Video
-
 <div align="center">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/vQ7BdJEpYG8?si=fhxrAM_Nrq3yokXJ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  [![Watch the TypeChat AI Intro Video](https://img.youtube.com/vi/vQ7BdJEpYG8/0.jpg)](https://youtu.be/vQ7BdJEpYG8?si=fhxrAM_Nrq3yokXJ)
 </div>
+
 ---
 ## ✨ Features
 
