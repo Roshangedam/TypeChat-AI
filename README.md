@@ -16,7 +16,7 @@
 
 ## 🎥 Watch Our Intro Video
 
-  [![Watch the TypeChat AI Intro Video](https://img.youtube.com/vi/vQ7BdJEpYG8/0.jpg)](https://youtu.be/vQ7BdJEpYG8?si=fhxrAM_Nrq3yokXJ)
+  [![Watch the TypeChat AI Intro Video](https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_play_button_icon_%282013%E2%80%932017%29.svg)](https://youtu.be/vQ7BdJEpYG8?si=fhxrAM_Nrq3yokXJ)
 
 
 ---
