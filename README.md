@@ -4,11 +4,11 @@
   
   ![TypeChat AI Banner](https://raw.githubusercontent.com/Roshangedam/TypeChat-AI/refs/heads/main/images/icon128.png)
 
-  ### Experience AI conversations with realistic typing sounds
+### Experience AI conversations with realistic typing sounds
 
-  [![Chrome Web Store](https://img.shields.io/badge/Chrome-Install-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/typechat-ai/fbngahpjpgnkjdnmgnahkbpncdmocbmo)
-  [![Firefox Add-ons](https://img.shields.io/badge/Firefox-Install-FF7139?style=for-the-badge&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/typechat-ai/)
-  [![GitHub](https://img.shields.io/badge/GitHub-Source-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Roshangedam/typechat-ai)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome-Install-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/typechat-ai/fbngahpjpgnkjdnmgnahkbpncdmocbmo)
+[![Firefox Add-ons](https://img.shields.io/badge/Firefox-Install-FF7139?style=for-the-badge&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/typechat-ai/)
+[![GitHub](https://img.shields.io/badge/GitHub-Source-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Roshangedam/typechat-ai)
 
 </div>
 
@@ -16,8 +16,15 @@
 
 ## 🎥 Watch Our Intro Video
 
-  [![Watch the TypeChat AI Intro Video](https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_play_button_icon_%282013%E2%80%932017%29.svg)](https://youtu.be/vQ7BdJEpYG8?si=fhxrAM_Nrq3yokXJ)
-
+<div align="center">
+<a href="https://youtu.be/vQ7BdJEpYG8?si=fhxrAM_Nrq3yokXJ">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_play_button_icon_%282013%E2%80%932017%29.svg" width="100">
+</a>
+<br/>
+<a href="https://youtu.be/vQ7BdJEpYG8?si=fhxrAM_Nrq3yokXJ">
+  click to watch
+</a>
+</div>
 
 ---
 
@@ -40,10 +47,10 @@
 
 <div align="center">
 
-  | Platform | Install Link |
-  |:--------:|:------------:|
-  | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" width="24" /> Chrome | [Chrome Web Store](https://chromewebstore.google.com/detail/typechat-ai/fbngahpjpgnkjdnmgnahkbpncdmocbmo) |
-  | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" width="24" /> Firefox | [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/typechat-ai/) |
+|                                                          Platform                                                           |                                               Install Link                                                |
+| :-------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------: |
+|  <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" width="24" /> Chrome   | [Chrome Web Store](https://chromewebstore.google.com/detail/typechat-ai/fbngahpjpgnkjdnmgnahkbpncdmocbmo) |
+| <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" width="24" /> Firefox |              [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/typechat-ai/)               |
 
 </div>
 
@@ -87,12 +94,14 @@ npm run dev
 ```
 
 #### Load in Chrome
+
 - Open Chrome and navigate to `chrome://extensions/`
 - Enable "Developer mode"
 - Click "Load unpacked"
 - Select the `dist` folder from the project
 
 #### Load in Firefox
+
 - Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
 - Click "Load Temporary Add-on"
 - Select any file in the `dist` folder
