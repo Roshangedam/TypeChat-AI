@@ -16,10 +16,10 @@
 
 ## 🎥 Watch Our Intro Video
 
-
-  [![YouTube](http://i.ytimg.com/vi/vQ7BdJEpYG8/hqdefault.jpg)](https://www.youtube.com/watch?v=vQ7BdJEpYG8)
-
-
+<div align="center">
+  <iframe width="350" height="300" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+</iframe>
+</div>
 ---
 ## ✨ Features
 
