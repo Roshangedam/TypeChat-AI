@@ -2,7 +2,7 @@
 
 <div align="center">
   
-  ![TypeChat AI Banner](https://user-images.githubusercontent.com/placeholder/typechat-banner.png)
+  ![TypeChat AI Banner](https://raw.githubusercontent.com/Roshangedam/TypeChat-AI/refs/heads/main/images/icon128.png)
 
   ### Experience AI conversations with realistic typing sounds
 
