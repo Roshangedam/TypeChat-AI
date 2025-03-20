@@ -16,9 +16,16 @@
 
 ## 🎥 Watch Our Intro Video
 
-<div align="center">
-  <iframe width="350" height="300" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-</iframe>
+<div style="width: 560px; height: 315px; float: none; clear: both; margin: 2px auto;">
+  <embed
+    src="https://www.youtube.com/embed/tgbNymZ7vqY"
+    wmode="transparent"
+    type="video/mp4"
+    width="100%" height="100%"
+    allow="autoplay; encrypted-media; picture-in-picture"
+    allowfullscreen
+    title="Keyboard Cat"
+  >
 </div>
 ---
 ## ✨ Features
