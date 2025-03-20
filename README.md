@@ -14,9 +14,7 @@
 
 ---
 
-<div align="center">
-  [![Watch the TypeChat AI Intro Video](https://img.youtube.com/vi/vQ7BdJEpYG8/0.jpg)](https://youtu.be/vQ7BdJEpYG8?si=fhxrAM_Nrq3yokXJ)
-</div>
+[![YouTube](http://i.ytimg.com/vi/vQ7BdJEpYG8/hqdefault.jpg)](https://www.youtube.com/watch?v=vQ7BdJEpYG8)
 
 ---
 ## ✨ Features
