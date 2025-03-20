@@ -14,6 +14,13 @@
 
 ---
 
+## 🎥 Watch Our Intro Video
+
+  [![Watch the TypeChat AI Intro Video](https://img.youtube.com/vi/vQ7BdJEpYG8/0.jpg)](https://youtu.be/vQ7BdJEpYG8?si=fhxrAM_Nrq3yokXJ)
+
+
+---
+
 ## ✨ Features
 
 - 🎯 **Realistic typing sounds** - Experience AI responses with authentic keyboard sounds
