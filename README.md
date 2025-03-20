@@ -8,7 +8,7 @@
 
   [![Chrome Web Store](https://img.shields.io/badge/Chrome-Install-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/typechat-ai/fbngahpjpgnkjdnmgnahkbpncdmocbmo)
   [![Firefox Add-ons](https://img.shields.io/badge/Firefox-Install-FF7139?style=for-the-badge&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/typechat-ai/)
-  [![GitHub](https://img.shields.io/badge/GitHub-Source-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/typechat-ai/typechat-ai)
+  [![GitHub](https://img.shields.io/badge/GitHub-Source-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Roshangedam/typechat-ai)
 
 </div>
 
@@ -69,7 +69,7 @@ We welcome contributions from the community! Here's how you can help:
 
 ```bash
 # Clone the repository
-git clone https://github.com/typechat-ai/typechat-ai
+git clone https://github.com/Roshangedam/typechat-ai
 cd typechat-ai
 
 # Install dependencies
@@ -102,8 +102,8 @@ npm run dev
 
 ## 📞 Contact
 
-- GitHub: [typechat-ai](https://github.com/typechat-ai)
-- Issues: [Report a bug](https://github.com/typechat-ai/typechat-ai/issues)
+- GitHub: [typechat-ai](https://github.com/Roshangedam/TypeChat-AI)
+- Issues: [Report a bug](https://github.com/Roshangedam/typechat-ai/issues)
 
 ---
 
