@@ -16,16 +16,8 @@
 
 ## 🎥 Watch Our Intro Video
 
-<div style="width: 560px; height: 315px; float: none; clear: both; margin: 2px auto;">
-  <embed
-    src="https://www.youtube.com/embed/tgbNymZ7vqY"
-    wmode="transparent"
-    type="video/mp4"
-    width="100%" height="100%"
-    allow="autoplay; encrypted-media; picture-in-picture"
-    allowfullscreen
-    title="Keyboard Cat"
-  >
+<div align="center">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/vQ7BdJEpYG8?si=fhxrAM_Nrq3yokXJ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 ---
 ## ✨ Features
