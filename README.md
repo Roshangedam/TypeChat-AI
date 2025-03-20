@@ -16,9 +16,9 @@
 
 ## 🎥 Watch Our Intro Video
 
-<div align="center">
+
   [![YouTube](http://i.ytimg.com/vi/vQ7BdJEpYG8/hqdefault.jpg)](https://www.youtube.com/watch?v=vQ7BdJEpYG8)
-</div>
+
 
 ---
 ## ✨ Features
