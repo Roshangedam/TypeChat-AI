@@ -1,37 +1,60 @@
-# TypeChat AI
+# ⌨️ TypeChat AI
 
-TypeChat AI is a browser extension that enhances your AI chat experience by adding realistic typing sounds to responses from various AI platforms like ChatGPT, Claude, and others. This creates a more immersive and engaging interaction with AI chatbots.
+<div align="center">
+  
+  ![TypeChat AI Banner](https://user-images.githubusercontent.com/placeholder/typechat-banner.png)
 
-## Features
+  ### Experience AI conversations with realistic typing sounds
 
-- 🎯 Realistic typing sound effects
-- 🔊 Multiple sound variations for natural feel
-- ⚡ Lightweight and performant
-- 🔌 Support for multiple AI platforms
-- 🎨 Simple and intuitive interface
+  [![Chrome Web Store](https://img.shields.io/badge/Chrome-Install-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/typechat-ai/fbngahpjpgnkjdnmgnahkbpncdmocbmo)
+  [![Firefox Add-ons](https://img.shields.io/badge/Firefox-Install-FF7139?style=for-the-badge&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/typechat-ai/)
+  [![GitHub](https://img.shields.io/badge/GitHub-Source-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/typechat-ai/typechat-ai)
 
-## Supported Platforms
+</div>
+
+---
+
+## ✨ Features
+
+- 🎯 **Realistic typing sounds** - Experience AI responses with authentic keyboard sounds
+- 🔊 **Sound variations** - Multiple sound patterns for a natural, non-repetitive feel
+- ⚡ **Lightweight** - Minimal impact on browser performance
+- 🔌 **Multi-platform** - Works across popular AI chat services
+- 🎨 **User-friendly** - Simple controls for volume and preferences
+
+## 🤖 Supported AI Platforms
 
 - ChatGPT (chat.openai.com)
 - Claude (claude.ai)
 - DeepSeek Chat (chat.deepseek.com)
 - ChatGPT.com
 
-## Installation
+## 📥 Quick Installation
 
-1. Download the extension from the Chrome Web Store (coming soon)
-2. Click the extension icon in your browser toolbar
-3. Configure your preferred settings
-4. Start chatting with AI and enjoy the typing sounds!
+<div align="center">
 
-## Usage
+  | Platform | Install Link |
+  |:--------:|:------------:|
+  | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" width="24" /> Chrome | [Chrome Web Store](https://chromewebstore.google.com/detail/typechat-ai/fbngahpjpgnkjdnmgnahkbpncdmocbmo) |
+  | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" width="24" /> Firefox | [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/typechat-ai/) |
 
-1. Visit any supported AI chat platform
-2. Start a conversation with the AI
-3. As the AI responds, you'll hear realistic typing sounds
-4. Use the extension popup to adjust volume or disable sounds temporarily
+</div>
 
-## Contributing
+## 🔧 How to Use
+
+1. **Install** the extension from your browser's store
+2. **Visit** any supported AI chat platform
+3. **Start** a conversation with the AI
+4. **Enjoy** the immersive typing sounds as the AI responds
+5. **Customize** volume and settings through the extension popup
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/placeholder/typechat-demo.gif" alt="TypeChat AI Demo" width="600"/>
+</div>
+
+## 👩‍💻 For Developers
+
+### Contributing
 
 We welcome contributions from the community! Here's how you can help:
 
@@ -42,34 +65,52 @@ We welcome contributions from the community! Here's how you can help:
 5. Push to the branch (`git push origin feature/improvement`)
 6. Create a Pull Request
 
-## Development
+### Local Development
 
-1. Clone the repository
 ```bash
+# Clone the repository
 git clone https://github.com/typechat-ai/typechat-ai
 cd typechat-ai
+
+# Install dependencies
+npm install
+
+# Build for development
+npm run dev
 ```
 
-2. Load the extension in Chrome:
-   - Open Chrome and go to `chrome://extensions/`
-   - Enable "Developer mode"
-   - Click "Load unpacked"
-   - Select the project directory
+#### Load in Chrome
+- Open Chrome and navigate to `chrome://extensions/`
+- Enable "Developer mode"
+- Click "Load unpacked"
+- Select the `dist` folder from the project
 
-## License
+#### Load in Firefox
+- Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
+- Click "Load Temporary Add-on"
+- Select any file in the `dist` folder
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 📜 License & Privacy
 
-## Acknowledgments
+- This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- Privacy Policy: [View our Privacy Policy](https://gist.github.com/3e490edbd1cb4e61c3c23455813534c4.git)
 
-- Thanks to all contributors who have helped make this project better
+## 🙏 Acknowledgments
+
+- Thank you to all contributors who have helped make this project better
 - Sound effects are carefully selected to provide a natural typing experience
 
-## Contact
+## 📞 Contact
 
 - GitHub: [typechat-ai](https://github.com/typechat-ai)
 - Issues: [Report a bug](https://github.com/typechat-ai/typechat-ai/issues)
 
 ---
 
-Made with ❤️ by the TypeChat AI Team
+<div align="center">
+  
+  Made with ❤️ by the TypeChat AI Team
+  
+  <p>Give your AI conversations a more human touch</p>
+  
+</div>
